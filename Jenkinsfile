@@ -46,14 +46,6 @@ pipeline {
             }
         }
 
-        stage('Copy WAR to Liberty') {
-            steps {
-                echo "Copie du WAR vers Liberty dropins..."
-                sh "cp ${WAR_FILE} /liberty-apps/infra-demo.war"
-                echo "WAR déposé dans /liberty-apps/"
-            }
-        }
-
         stage('Deploy via Ansible') {
             steps {
                 echo "Déploiement sur Liberty Core via Ansible..."
