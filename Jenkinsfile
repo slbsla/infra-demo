@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        // Nom configuré dans Jenkins > Global Tool Configuration
-        maven 'Maven-3.9'
-        jdk   'JDK-21'
-    }
 
     environment {
         APP_NAME    = 'infra-demo'
