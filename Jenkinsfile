@@ -50,15 +50,10 @@ pipeline {
             steps {
                 echo "Déploiement sur Liberty Core via Ansible..."
                 sh """
-                    docker run --rm \
-                        -v /var/jenkins_home/workspace/infra-demo:/workspace \
-                        -v /ansible:/ansible \
-                        -v /liberty-dropins:/liberty-dropins \
-                        cytopia/ansible:latest \
-                        ansible-playbook /ansible/deploy.yml \
-                            -i /ansible/inventory.ini \
-                            -e war_src=/workspace/${WAR_FILE} \
-                            -e liberty_dropins=/liberty-dropins
+                    ansible-playbook /ansible/deploy.yml \
+                        -i /ansible/inventory.ini \
+                        -e war_src=${WORKSPACE}/${WAR_FILE} \
+                        -e liberty_dropins=/liberty-dropins
                 """
             }
         }
